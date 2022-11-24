@@ -8,12 +8,47 @@ const checked = document.querySelector(".checked");
 //button triger -- first function
 var calculate = 0;
 button.addEventListener("click", go);
-//keyboard entry
-//input.addEventListener("keyup", go);
+
 //function for all
-function go() {
+function go(e) {
   if (input.value != "") {
+    e.preventDefault();
+    //calculate
     calculate++;
+
+    //toast **** !!bug = if there is no value inside input, it can give another warning
+
+    ///toast
+    if (input.value !== "") {
+      button.addEventListener("click", function () {
+        let element = document.getElementById("toastID");
+        console.log(input.value);
+        // Create toast instance
+        let myToast = new bootstrap.Toast(element);
+
+        button.addEventListener("click", function () {
+          myToast.show();
+        });
+      });
+    } else {
+      button.addEventListener("click", function () {
+        let empty = document.getElementById("toastEmpty");
+
+        // Create toast instance
+        let myToastEmpty = new bootstrap.Toast(empty);
+
+        button.addEventListener("click", function () {
+          myToastEmpty.show();
+        });
+      });
+    }
+
+    //localstorage
+    let value = document.querySelector("#input").value;
+
+    //
+    localStorage.setItem("item", JSON.stringify(value));
+    localStorage.getItem(value);
 
     // create Elements
     let liste = document.createElement("ul");
@@ -45,11 +80,11 @@ function go() {
     //appends
     list.append(liste);
     liste.append(paragraf);
-
     paragraf.append(buttonGroup);
     buttonGroup.append(deleteButton);
     buttonGroup.append(finishButton);
-    //delete input after  every writing
+
+    //delete input after every writing
     input.value = "";
 
     //eventListeners
@@ -60,11 +95,5 @@ function go() {
     finishButton.addEventListener("click", function () {
       paragraf.classList.toggle("checked");
     });
-
-    //localstorage
-    const storage = document.querySelector(".storage");
-    localStorage.setItem("item", JSON.stringify(storage));
-    console.log(localStorage.getItem("item"));
-    console.log(storage);
   }
 }

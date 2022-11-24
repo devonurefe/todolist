@@ -29,9 +29,42 @@
   </head>
   <body>
     <!-- Main Container -->
+    <!-- Toast Added -->
+    <div
+      aria-live="polite"
+      aria-atomic="true"
+      style="position: relative; max-height: 10px"
+    >
+      <div
+        class="toast w-25"
+        id="toastID"
+        style="position: absolute; top: 1px; right: 1px"
+      >
+        <div class="toast-body font-weight-bold text-center">
+          Your note added
+        </div>
+      </div>
+    </div>
+    <!-- Toast Empty -->
+    <div
+      aria-live="polite"
+      aria-atomic="true"
+      style="position: relative; max-height: 10px"
+    >
+      <div
+        class="toast w-25"
+        id="toastEmpty"
+        style="position: absolute; top: 1px; right: 1px"
+      >
+        <div class="toast-body font-weight-bold text-center">Note is empty</div>
+      </div>
+    </div>
+
+    <!-- Container -->
     <div class="container">
       <!-- Header -->
       <div class="header">
+        <!-- Header Card -->
         <div class="card headerCard" style="width: 18rem">
           <div class="cardImg">
             <img src="image/Sandy_Tech-22_Single-09.jpg" class="card-img-top" />
